@@ -1,5 +1,5 @@
 
-package com.code.saher.moviesapp.Model;
+package com.code.saher.moviesapp.Models.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -27,7 +27,7 @@ public class Result implements Serializable {
     private List<Integer> genreIds = new ArrayList<Integer>();
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private String id;
     @SerializedName("original_title")
     @Expose
     private String originalTitle;
@@ -148,7 +148,7 @@ public class Result implements Serializable {
      * @return
      *     The id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -157,7 +157,7 @@ public class Result implements Serializable {
      * @param id
      *     The id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

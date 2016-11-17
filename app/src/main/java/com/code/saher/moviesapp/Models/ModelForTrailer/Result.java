@@ -1,5 +1,5 @@
 
-package com.code.saher.moviesapp.ModelForTrailer;
+package com.code.saher.moviesapp.Models.ModelForTrailer;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

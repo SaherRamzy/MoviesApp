@@ -20,17 +20,14 @@ import java.util.ArrayList;
  */
 public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MovieViewHolder> {
 
-    final static String YOUTUBE_API_URL="http://www.youtube.com/watch?v=";
-
-    private ArrayList<com.code.saher.moviesapp.ModelForTrailer.Result> data;
-//    private onItemClickListenercustom listener;
+    private final static String YOUTUBE_API_URL="http://www.youtube.com/watch?v=";
+    private ArrayList<com.code.saher.moviesapp.Models.ModelForTrailer.Result> data;
     private int rowLayout;
     Context context;
-    public TrailerAdapter(Context context, ArrayList<com.code.saher.moviesapp.ModelForTrailer.Result> data, int rowLayout) {
+    public TrailerAdapter(Context context, ArrayList<com.code.saher.moviesapp.Models.ModelForTrailer.Result> data, int rowLayout) {
         this.context = context;
         this.data = data;
         this.rowLayout = rowLayout;
-//        this.listener=listener;
     }
 
     @Override
@@ -41,7 +38,6 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MovieVie
 
     @Override
     public void onBindViewHolder(final MovieViewHolder holder, final int position) {
-//        holder.bind(data.get(position), listener);
         holder.trailerTitle.setText(data.get(position).getName());
         Picasso.with(context).load(YOUTUBE_API_URL+data.get(position).getKey())
                 .into(holder.youTubeThump);
@@ -70,14 +66,5 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MovieVie
             playIcon = (ImageView) itemView.findViewById(R.id.trailer_play);
             youTubeThump = (ImageView) itemView.findViewById(R.id.youtube_thumb);
         }
-//        public void bind(final Result result, final onItemClickListenercustom listener) {
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    listener.onItemClick(result);
-//
-//                }
-//            });
-//        }
     }
 }

@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Clint Eastwood"
         android:textAppearance="?android:attr/textAppearanceListItem" />
 
     <TextView
@@ -17,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="@string/generic_long_text"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
 </LinearLayout>

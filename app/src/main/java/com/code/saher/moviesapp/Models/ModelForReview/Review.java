@@ -1,5 +1,5 @@
 
-package com.code.saher.moviesapp.Model;
+package com.code.saher.moviesapp.Models.ModelForReview;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,20 +7,41 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Review {
 
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("page")
     @Expose
     private Integer page;
     @SerializedName("results")
     @Expose
     private List<Result> results = new ArrayList<Result>();
-    @SerializedName("total_results")
-    @Expose
-    private Integer totalResults;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
+    @SerializedName("total_results")
+    @Expose
+    private Integer totalResults;
+
+    /**
+     * 
+     * @return
+     *     The id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * 
+     * @param id
+     *     The id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     /**
      * 
@@ -61,24 +82,6 @@ public class Movie {
     /**
      * 
      * @return
-     *     The totalResults
-     */
-    public Integer getTotalResults() {
-        return totalResults;
-    }
-
-    /**
-     * 
-     * @param totalResults
-     *     The total_results
-     */
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
-    }
-
-    /**
-     * 
-     * @return
      *     The totalPages
      */
     public Integer getTotalPages() {
@@ -92,6 +95,24 @@ public class Movie {
      */
     public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
+    }
+
+    /**
+     * 
+     * @return
+     *     The totalResults
+     */
+    public Integer getTotalResults() {
+        return totalResults;
+    }
+
+    /**
+     * 
+     * @param totalResults
+     *     The total_results
+     */
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
     }
 
 }
