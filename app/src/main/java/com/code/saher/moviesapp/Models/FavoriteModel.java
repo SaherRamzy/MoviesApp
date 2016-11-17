@@ -1,4 +1,4 @@
-package com.code.saher.moviesapp.MoviesDB;
+package com.code.saher.moviesapp.Models;
 
 /**
  * Created by saher on 11/7/2016.
