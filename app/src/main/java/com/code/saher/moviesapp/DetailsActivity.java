@@ -12,9 +12,17 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_details,new DetailsFragment())
-                .commit();
+
+        if (savedInstanceState == null) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("result", getIntent().getExtras().getSerializable("result"));
+            DetailsFragment detailsFragment = new DetailsFragment();
+            detailsFragment.setArguments(bundle);
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.activity_details, detailsFragment)
+                    .commit();
+        }
 
     }
 }

@@ -40,7 +40,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailsFragment extends Fragment implements View.OnClickListener{
 
-    Result result;
+    Result result ;
     ImageView iv_poster;
     TextView tv_1,tv_2,tv_3,tv_4;
     Button btn_fav;
@@ -71,8 +71,15 @@ public class DetailsFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
-        result = (Result) getActivity().getIntent().getExtras().getSerializable("result");
 
+        Bundle arguments = getArguments();
+        if(arguments!=null){
+            result= (Result) arguments.getSerializable("result");
+        }
+        else{
+//            result = (Result) getActivity().getIntent().getExtras().getSerializable("result");
+            return null;
+        }
         iv_poster= (ImageView) view.findViewById(R.id.item_image);
         tv_1= (TextView) view.findViewById(R.id.item_text1);
         tv_2= (TextView) view.findViewById(R.id.item_text2);
@@ -95,7 +102,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener{
         tv_1.setText(result.getOriginalTitle());
         tv_2.setText("ID : "+result.getId());
         tv_3.setText("Overview : "+result.getOverview());
-        tv_4.setText("Votecount : "+result.getVoteCount().toString());
+        tv_4.setText("Vote : "+result.getVoteAverage().toString());
 
         return view;
     }

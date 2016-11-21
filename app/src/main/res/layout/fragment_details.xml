@@ -13,7 +13,6 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
         android:fitsSystemWindows="true"
         >
 
@@ -98,13 +97,6 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="Favorite"/>
-
-        <!--<Button-->
-            <!--android:id="@+id/btn_show"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:text="show"/>-->
 
         <TextView
             android:layout_width="wrap_content"
