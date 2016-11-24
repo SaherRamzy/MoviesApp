@@ -7,19 +7,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.code.saher.moviesapp.Adapter.RetrofitAdapter;
 import com.code.saher.moviesapp.Fragments.DetailsFragment;
-import com.code.saher.moviesapp.Fragments.MainFragment;
 import com.code.saher.moviesapp.Models.Model.Result;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.Interface {
+//public class MainActivity extends AppCompatActivity implements MainFragment.Interface {
+public class MainActivity extends AppCompatActivity implements RetrofitAdapter.Interface {
 
-    MainFragment mainFragment ;
     Boolean inTwoPane = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainFragment = new MainFragment();
 
         validation(savedInstanceState);
 

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.code.saher.moviesapp.Interface.onItemClickListenercustom;
 import com.code.saher.moviesapp.Models.Model.Result;
 import com.code.saher.moviesapp.R;
 import com.squareup.picasso.Picasso;
@@ -18,19 +17,16 @@ import java.util.ArrayList;
 /**
  * Created by saher on 9/4/2016.
  */
-public class RetrofitAdapter1 extends RecyclerView.Adapter<RetrofitAdapter1.MovieViewHolder> {
-    final static String IMAGE_API_URL="http://image.tmdb.org/t/p/w500";
-
-    private ArrayList<Result> data;
-    private onItemClickListenercustom listener;
+public class RetrofitAdapter extends RecyclerView.Adapter<RetrofitAdapter.MovieViewHolder> {
+    private final static String IMAGE_API_URL="http://image.tmdb.org/t/p/w500";
+    private ArrayList<Result> data = new ArrayList<>();
     private int rowLayout;
     Context context;
-    public RetrofitAdapter1(Context context,ArrayList<Result> data, int rowLayout,onItemClickListenercustom listener) {
 
+    public RetrofitAdapter(Context context,ArrayList<Result> data, int rowLayout) {
         this.context = context;
         this.data = data;
         this.rowLayout = rowLayout;
-        this.listener=listener;
     }
 
     @Override
@@ -41,9 +37,14 @@ public class RetrofitAdapter1 extends RecyclerView.Adapter<RetrofitAdapter1.Movi
 
     @Override
     public void onBindViewHolder(final MovieViewHolder holder, final int position) {
-        holder.bind(data.get(position), listener);
         holder.tv1.setText(data.get(position).getOriginalTitle());
         Picasso.with(context).load(IMAGE_API_URL+data.get(position).getPosterPath()).into(holder.iv_showIcon);
+        holder.iv_showIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Interface) context).onSelectionchange(data.get(position));
+            }
+        });
     }
 
     @Override
@@ -60,13 +61,9 @@ public class RetrofitAdapter1 extends RecyclerView.Adapter<RetrofitAdapter1.Movi
             tv1 = (TextView) itemView.findViewById(R.id.item_text0);
             iv_showIcon = (ImageView) itemView.findViewById(R.id.item_image);
         }
-        public void bind(final Result result, final onItemClickListenercustom listener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(result);
-                }
-            });
-        }
+    }
+
+    public interface Interface {
+        void onSelectionchange(Result data);
     }
 }

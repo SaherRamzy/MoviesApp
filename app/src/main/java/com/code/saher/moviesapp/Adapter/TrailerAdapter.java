@@ -15,6 +15,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by saher on 9/4/2016.
  */
@@ -56,15 +59,13 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MovieVie
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder{
-        TextView trailerTitle;
-        ImageView playIcon;
-        ImageView youTubeThump;
+        @BindView(R.id.trailer_name) TextView trailerTitle;
+        @BindView(R.id.trailer_play) ImageView playIcon;
+        @BindView(R.id.youtube_thumb) ImageView youTubeThump;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
-            trailerTitle = (TextView) itemView.findViewById(R.id.trailer_name);
-            playIcon = (ImageView) itemView.findViewById(R.id.trailer_play);
-            youTubeThump = (ImageView) itemView.findViewById(R.id.youtube_thumb);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

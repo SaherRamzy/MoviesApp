@@ -13,5 +13,5 @@
     <string name="msg_failure">Error In Network</string>
     <string name="msg_not_response">Error In Response</string>
 
-     <string name="play_trailer">play trailer</string>
+    <string name="play_trailer">play trailer</string>
 </resources>

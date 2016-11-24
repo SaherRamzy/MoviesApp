@@ -7,5 +7,6 @@ package com.code.saher.moviesapp.Models;
 public class FavoriteModel {
     public String Name;
     public String Overview;
+    public String Logo;
 
 }

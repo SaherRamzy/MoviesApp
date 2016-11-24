@@ -11,6 +11,9 @@ import com.code.saher.moviesapp.R;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by saher on 11/16/2016.
  */
@@ -43,12 +46,12 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MovieViewH
         return data.size();
     }
     public static class MovieViewHolder extends RecyclerView.ViewHolder{
-        TextView review_author,review_content;
+        @BindView(R.id.review_author) TextView review_author;
+        @BindView(R.id.review_content) TextView review_content;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
-            review_author = (TextView) itemView.findViewById(R.id.review_author);
-            review_content = (TextView) itemView.findViewById(R.id.review_content);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

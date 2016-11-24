@@ -77,7 +77,6 @@ public class DetailsFragment extends Fragment implements View.OnClickListener{
             result= (Result) arguments.getSerializable("result");
         }
         else{
-//            result = (Result) getActivity().getIntent().getExtras().getSerializable("result");
             return null;
         }
         iv_poster= (ImageView) view.findViewById(R.id.item_image);
@@ -171,7 +170,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener{
                 }
                 else {
                     boolean check = dataBaseManager.
-                            Add_Movie(result.getId(), result.getOriginalTitle(), result.getOverview());
+                            Add_Movie(result.getId(), result.getOriginalTitle(), result.getOverview(),result.getPosterPath());
                     if (check) Toast.makeText(getActivity(), getResources().getString(R.string.msg_saved), Toast.LENGTH_SHORT).show();
                     else Toast.makeText(getActivity(), getResources().getString(R.string.msg_not_saved), Toast.LENGTH_SHORT).show();
                 }

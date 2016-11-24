@@ -22,6 +22,7 @@ public class DataBaseManager extends SQLiteOpenHelper {
     public static final String col_1 = "id";
     public static final String col_2 = "Name";
     public static final String col_3 = "overview";
+    public static final String col_4 = "logo";
 
     public DataBaseManager(Context context) {
         super(context, Database_name,null, DATABASE_VERSION);
@@ -32,7 +33,8 @@ public class DataBaseManager extends SQLiteOpenHelper {
         String ss = ( " create table " + table_name + " ( "
                 + col_1 + " text not null unique, "
                 + col_2 + " text not null, "
-                + col_3 + " text not null ) ; " ) ;
+                + col_3 + " text not null, "
+                + col_4 + " text not null ) ; " ) ;
         try {
             db.execSQL(ss);
         } catch (Exception sd) {}
@@ -44,12 +46,13 @@ public class DataBaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public Boolean Add_Movie(String ID, String Name, String Overview){
+    public Boolean Add_Movie(String ID, String Name, String Overview,String logo){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(col_1,ID);
         contentValues.put(col_2,Name);
         contentValues.put(col_3,Overview);
+        contentValues.put(col_4,logo);
         long raw = db.insert(table_name, null, contentValues);
         if (raw != -1) return true;
         else return false;
@@ -62,10 +65,12 @@ public class DataBaseManager extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             String name = cursor.getString(1);
             String overview = cursor.getString(2);
+            String logo = cursor.getString(3);
 
             FavoriteModel movie1 = new FavoriteModel();
             movie1.Name = name;
             movie1.Overview = overview;
+            movie1.Logo=logo;
 
             movies.add(movie1);
         }

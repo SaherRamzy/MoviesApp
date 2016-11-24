@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.code.saher.moviesapp.MainActivity">
+    tools:context="com.code.saher.moviesapp.SplashActivity">
 
-    <fragment
-        android:name="com.code.saher.moviesapp.Fragments.MainFragment"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_fragment"
-        />
+        android:src="@drawable/splash"
+        android:scaleType="centerCrop"/>
 
 </RelativeLayout>

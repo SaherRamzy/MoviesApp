@@ -12,21 +12,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.code.saher.moviesapp.Adapter.RetrofitAdapter;
 import com.code.saher.moviesapp.FavoriteActivity;
 import com.code.saher.moviesapp.Interface.RetrofitInterface;
-import com.code.saher.moviesapp.Interface.onItemClickListenercustom;
 import com.code.saher.moviesapp.Models.Model.Movie;
 import com.code.saher.moviesapp.Models.Model.Result;
 import com.code.saher.moviesapp.R;
-import com.code.saher.moviesapp.Adapter.RetrofitAdapter1;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,9 +36,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainFragment extends Fragment {
 
     RetrofitInterface moviesAPI;
-//    RetrofitAdapter retrofitAdapter;
-    RetrofitAdapter1 retrofitAdapter1;
-    RecyclerView rv_show;
+    RetrofitAdapter retrofitAdapter;
+    @BindView(R.id.rv_show)RecyclerView rv_show;
     Gson gson;
     Retrofit retrofit;
     ProgressDialog progressDialog;
@@ -65,10 +64,9 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_main, container, false);
 
+        ButterKnife.bind(this,view);
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please Wait ... ");
-
-        rv_show = (RecyclerView) view.findViewById(R.id.rv_show);
         rv_show.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         rv_show.setLayoutManager( layoutManager);
@@ -79,18 +77,19 @@ public class MainFragment extends Fragment {
         return view;
     }
     private void initRetrofit(){
+//        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+//                .connectTimeout(60, TimeUnit.SECONDS)
+//                .build();
         gson = new GsonBuilder().create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(getResources().getString(R.string.MOVIES_BASE_URL))
                 .addConverterFactory(GsonConverterFactory.create(gson))
+//                .client(okHttpClient)
                 .build();
         moviesAPI = retrofit.create(RetrofitInterface.class);
         getDataFromAPI(moviesAPI);
     }
 
-    public interface Interface {
-        void onSelectionchange(Result data);
-    }
 
     public void getDataFromAPI(RetrofitInterface moviesreq){
         Call<Movie> call = moviesreq.getData();
@@ -102,21 +101,8 @@ public class MainFragment extends Fragment {
                     progressDialog.dismiss();
                     Movie moviesResp = response.body();
                     ArrayList<Result> arrayList= (ArrayList<Result>) moviesResp.getResults();
-//                    retrofitAdapter = new RetrofitAdapter(getActivity(), arrayList, R.layout.grid_row);
-                    retrofitAdapter1 = new RetrofitAdapter1(getActivity(), arrayList, R.layout.grid_row, new onItemClickListenercustom() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        }
-
-                        @Override
-                        public void onItemClick(Result result) {
-//                            Intent intent = new Intent(getActivity(),DetailsActivity.class);
-//                            intent.putExtra("result", result);
-//                            getActivity().startActivity(intent);
-                            ((Interface) getActivity()).onSelectionchange(result);
-                        }
-                    });
-                    rv_show.setAdapter(retrofitAdapter1);
+                    retrofitAdapter = new RetrofitAdapter(getActivity(), arrayList, R.layout.grid_row);
+                    rv_show.setAdapter(retrofitAdapter);
                 }
                 else {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_not_response) + String.valueOf(code), Toast.LENGTH_LONG).show();}
@@ -164,21 +150,8 @@ public class MainFragment extends Fragment {
                     progressDialog.dismiss();
                     Movie moviesResp = response.body();
                     ArrayList<Result> arrayList= (ArrayList<Result>) moviesResp.getResults();
-//                    retrofitAdapter = new RetrofitAdapter(getActivity(),arrayList,R.layout.grid_row);
-                    retrofitAdapter1 = new RetrofitAdapter1(getActivity(), arrayList, R.layout.grid_row, new onItemClickListenercustom() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        }
-
-                        @Override
-                        public void onItemClick(Result result) {
-//                            Intent intent = new Intent(getActivity(),DetailsActivity.class);
-//                            intent.putExtra("result", result);
-//                            getActivity().startActivity(intent);
-                            ((Interface) getActivity()).onSelectionchange(result);
-                        }
-                    });
-                    rv_show.setAdapter(retrofitAdapter1);
+                    retrofitAdapter = new RetrofitAdapter(getActivity(), arrayList, R.layout.grid_row);
+                    rv_show.setAdapter(retrofitAdapter);
                 }
                 else {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_not_response), Toast.LENGTH_LONG).show();}
@@ -201,21 +174,8 @@ public class MainFragment extends Fragment {
                     progressDialog.dismiss();
                     Movie moviesResp = response.body();
                     ArrayList<Result> arrayList= (ArrayList<Result>) moviesResp.getResults();
-//                    retrofitAdapter = new RetrofitAdapter(getActivity(),arrayList,R.layout.grid_row);
-                    retrofitAdapter1 = new RetrofitAdapter1(getActivity(), arrayList, R.layout.grid_row, new onItemClickListenercustom() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        }
-
-                        @Override
-                        public void onItemClick(Result result) {
-//                            Intent intent = new Intent(getActivity(),DetailsActivity.class);
-//                            intent.putExtra("result", result);
-//                            getActivity().startActivity(intent);
-                            ((Interface) getActivity()).onSelectionchange(result);
-                        }
-                    });
-                    rv_show.setAdapter(retrofitAdapter1);
+                    retrofitAdapter = new RetrofitAdapter(getActivity(), arrayList, R.layout.grid_row);
+                    rv_show.setAdapter(retrofitAdapter);
                 }
                 else {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_not_response), Toast.LENGTH_LONG).show();}

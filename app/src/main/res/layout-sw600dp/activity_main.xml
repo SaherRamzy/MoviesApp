@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2b439a"
+    android:background="@color/colorPrimary"
     android:id="@+id/activity_main"
     tools:context="com.code.saher.moviesapp.MainActivity">
 
