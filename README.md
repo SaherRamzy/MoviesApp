@@ -1,6 +1,13 @@
 # MoviesApp
-
-## ScreenShots :
+## Features :
+   1-Find popular movies.
+   2-Find most rated movies.
+   3-Show trailers and reviews of the movies.
+   4-Mark Movies as favourites.
+   5-Add favourite movies.
+   6-Save favourite movies for offline use alongside thier trailers and reviews.
+   
+### ScreenShots :
 
 ![device-2016-11-24-194822](https://cloud.githubusercontent.com/assets/15967825/20612326/7322e118-b2c1-11e6-88fb-804b94b61f29.png)
 
