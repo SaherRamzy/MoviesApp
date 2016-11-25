@@ -56,7 +56,6 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
     }
 
     @Override
@@ -89,7 +88,6 @@ public class MainFragment extends Fragment {
         moviesAPI = retrofit.create(RetrofitInterface.class);
         getDataFromAPI(moviesAPI);
     }
-
 
     public void getDataFromAPI(RetrofitInterface moviesreq){
         Call<Movie> call = moviesreq.getData();

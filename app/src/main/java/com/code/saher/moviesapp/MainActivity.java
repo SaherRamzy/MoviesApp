@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements RetrofitAdapter.I
         setContentView(R.layout.activity_main);
 
         validation(savedInstanceState);
-
     }
 
     @Override
