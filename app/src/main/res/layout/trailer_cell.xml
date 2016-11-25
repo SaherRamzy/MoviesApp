@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Play Trailer"
-            android:src="@android:drawable/ic_media_play" />
+            android:src="@drawable/youtube" />
 
         <TextView
             android:id="@+id/trailer_name"
